@@ -27,6 +27,8 @@ while True:
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
     screen.blit(imagenTerreno, (posTerrenoX+336, posTerrenoY))
 
+    if posTerrenoX < -288:
+        posTerrenoX = 0
 
     pygame.display.update()
     fps.tick(60)
