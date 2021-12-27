@@ -25,6 +25,8 @@ while True:
 
     posTerrenoX -= velocidadJuego
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
+    screen.blit(imagenTerreno, (posTerrenoX+336, posTerrenoY))
+
 
     pygame.display.update()
     fps.tick(60)
