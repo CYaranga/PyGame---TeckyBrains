@@ -10,7 +10,8 @@ imagenDeFondo = pygame.image.load(Path(__file__).absolute().parent / "assets/bac
 
 #Terreno:
 imagenTerreno = pygame.image.load(Path(__file__).absolute().parent / "assets/base.png")
-
+posTerrenoX = 0
+posTerrenoY = 512 - 112
 
 while True:
     for event in pygame.event.get():
@@ -21,6 +22,8 @@ while True:
 
     screen.blit(imagenDeFondo, (0,0))
     screen.blit(imagenTerreno, (0,0))
+
+    screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
 
     pygame.display.update()
     fps.tick(60)
