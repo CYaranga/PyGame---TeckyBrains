@@ -8,6 +8,10 @@ screen = pygame.display.set_mode((288,512))
 fps = pygame.time.Clock()
 imagenDeFondo = pygame.image.load(Path(__file__).absolute().parent / "assets/background-day.png")
 
+#Terreno:
+imagenTerreno = pygame.image.load(Path(__file__).absolute().parent / "assets/base.png")
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -16,6 +20,7 @@ while True:
             sys.exit()
 
     screen.blit(imagenDeFondo, (0,0))
+    screen.blit(imagenTerreno, (0,0))
 
     pygame.display.update()
     fps.tick(60)
