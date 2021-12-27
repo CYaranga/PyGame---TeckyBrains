@@ -13,6 +13,7 @@ imagenTerreno = pygame.image.load(Path(__file__).absolute().parent / "assets/bas
 posTerrenoX = 0
 posTerrenoY = 512 - 112
 
+velocidadJuego = 1
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -21,8 +22,8 @@ while True:
             sys.exit()
 
     screen.blit(imagenDeFondo, (0,0))
-    screen.blit(imagenTerreno, (0,0))
 
+    posTerrenoX -= velocidadJuego
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
 
     pygame.display.update()
