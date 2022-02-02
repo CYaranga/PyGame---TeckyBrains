@@ -17,8 +17,13 @@ def MoverTubos(ListaDeTubos):
 
 def DibujarTubos(ListaDeTubos):
     #Se Dibuja cada lista de tubos 
+    #Se considera la posicion del tubo como referencia para dibujar la imagen volteada o no
     for tubo in listaTubos:
-        screen.blit(imagenTubo, tubo)
+        if tubo.bottom >400:
+            screen.blit(imagenTubo, tubo)
+        else: 
+            imagenVolteada = pygame.transform.flip(imagenTubo, False, True)
+            screen.blit(imagenVolteada, tubo)
 
 
 pygame.init()
