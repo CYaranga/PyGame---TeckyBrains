@@ -21,6 +21,15 @@ imagenTerreno = pygame.image.load(Path(__file__).absolute().parent / "assets/bas
 posTerrenoX = 0
 posTerrenoY = 512 - 112
 
+#Tubos:
+imagenTubo = pygame.image.load(Path(__file__).absolute().parent / "assets/pipe-green.png")
+#Crear lista vacia donde luego estarán todos los tubos
+listaTubos = []
+
+#Crear evento Custom que sucederá cada 2 segundos
+CREARTUBO = pygame.USEREVENT
+pygame.time.set_timer(CREARTUBO, 2000)
+
 velocidadJuego = 1
 while True:
     for event in pygame.event.get():
@@ -32,6 +41,11 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 velocidadPersonajeY = -3
+        
+        if event.type == CREARTUBO:
+            #Cogemos como referencia el puntoMedio de la parte superior y lo ubicamos fuera de la pantalla por el lado derecho
+            nuevoTubo = imagenTubo.get_rect(midtop = (300, 200))
+            listaTubos.append(nuevoTubo)
 
     screen.blit(imagenDeFondo, (0,0))
 
@@ -39,6 +53,10 @@ while True:
     velocidadPersonajeY += gravedad
     personajeRect.centery += velocidadPersonajeY
     screen.blit(imagenPersonaje, personajeRect)
+
+    #Se Dibuja cada lista de tubos
+    for tubo in listaTubos:
+        screen.blit(imagenTubo, tubo)
 
     posTerrenoX -= velocidadJuego
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
