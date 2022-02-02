@@ -25,6 +25,12 @@ def DibujarTubos(ListaDeTubos):
             imagenVolteada = pygame.transform.flip(imagenTubo, False, True)
             screen.blit(imagenVolteada, tubo)
 
+def RevisarColisiones(ListaDeTubos):
+    #Recorre toda la lista de tubos para verificar si hay una colision
+    for tubo in ListaDeTubos:
+        if personajeRect.colliderect(tubo):
+            print("Perdiste")
+
 
 pygame.init()
 
@@ -85,6 +91,7 @@ while True:
     listaTubos = MoverTubos(listaTubos)
     DibujarTubos(listaTubos)
     
+    RevisarColisiones(listaTubos)
 
     posTerrenoX -= velocidadJuego
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
