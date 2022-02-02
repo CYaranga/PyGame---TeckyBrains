@@ -1,11 +1,12 @@
 import pygame
 import sys
 from pathlib import Path
+import random
 
 ##Pequeña refactorización a funciones
 def CrearTubo():
-#Cogemos como referencia el puntoMedio de la parte superior y lo ubicamos fuera de la pantalla por el lado derecho
-    tuboAbajo = imagenTubo.get_rect(midtop = (300, 200))
+    alturaRandom = random.choice(alturaTubos)
+    tuboAbajo = imagenTubo.get_rect(midtop = (300, alturaRandom))
     return tuboAbajo
 
 def MoverTubos(ListaDeTubos):
@@ -46,6 +47,10 @@ listaTubos = []
 #Crear evento Custom que sucederá cada 2 segundos
 CREARTUBO = pygame.USEREVENT
 pygame.time.set_timer(CREARTUBO, 2000)
+
+#Alturas Tubos:
+#Se puede jugar con estas alturas
+alturaTubos = [300,250, 200, 180]
 
 velocidadJuego = 1
 while True:
