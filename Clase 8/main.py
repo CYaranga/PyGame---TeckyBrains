@@ -54,7 +54,11 @@ while True:
     personajeRect.centery += velocidadPersonajeY
     screen.blit(imagenPersonaje, personajeRect)
 
-    #Se Dibuja cada lista de tubos
+    #Se Mueven todos los tubos
+    for tubo in listaTubos:
+        tubo.centerx -= 5
+
+    #Se Dibuja cada lista de tubos 
     for tubo in listaTubos:
         screen.blit(imagenTubo, tubo)
 
