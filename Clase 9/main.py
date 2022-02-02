@@ -7,8 +7,7 @@ import random
 def CrearTubo():
     alturaRandom = random.choice(alturaTubos)
     tuboAbajo = imagenTubo.get_rect(midtop = (300, alturaRandom))
-    tuboArriba = imagenTubo.get_rect(midbottom = (300,alturaRandom - 150))
-    return tuboAbajo, tuboArriba
+    return tuboAbajo
 
 def MoverTubos(ListaDeTubos):
     for tubo in listaTubos:
@@ -66,7 +65,7 @@ while True:
                 velocidadPersonajeY = -3
         
         if event.type == CREARTUBO:            
-            listaTubos.extend(CrearTubo())
+            listaTubos.append(CrearTubo())
 
     screen.blit(imagenDeFondo, (0,0))
 
