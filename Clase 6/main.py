@@ -9,6 +9,10 @@ fps = pygame.time.Clock()
 imagenDeFondo = pygame.image.load(Path(__file__).absolute().parent / "assets/background-day.png")
 
 #Personaje:
+#Gravedad del Personaje:
+#Es bastante sensible modificar de a pocos y usar como punto de dificultad del juego
+gravedad = 0.1
+
 #la "velocidad" a la que esta cayendo el personaje en un instante
 velocidadPersonajeY = 0
 #Posiciones del personaje
@@ -41,6 +45,10 @@ while True:
     screen.blit(imagenDeFondo, (0,0))
 
     #Dibujar personaje:
+    #Se agrega la gravedad a la posicion como si fuera la aceleración
+    velocidadPersonajeY += gravedad
+    #La velocidad aplica a la pocision del personaje SOLO en Y
+    personajeRect.centery += velocidadPersonajeY
     screen.blit(imagenPersonaje, personajeRect)
 
     posTerrenoX -= velocidadJuego
