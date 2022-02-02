@@ -30,7 +30,11 @@ def RevisarColisiones(ListaDeTubos):
     for tubo in ListaDeTubos:
         if personajeRect.colliderect(tubo):
             print("Perdiste")
-
+    if personajeRect.top < -100:
+        print("Perdiste")
+    elif personajeRect.bottom > 420:
+        print("Perdiste")
+    
 
 pygame.init()
 
