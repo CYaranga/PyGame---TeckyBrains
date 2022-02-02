@@ -2,6 +2,23 @@ import pygame
 import sys
 from pathlib import Path
 
+##Pequeña refactorización a funciones
+def CrearTubo():
+#Cogemos como referencia el puntoMedio de la parte superior y lo ubicamos fuera de la pantalla por el lado derecho
+    tuboAbajo = imagenTubo.get_rect(midtop = (300, 200))
+    return tuboAbajo
+
+def MoverTubos(ListaDeTubos):
+    for tubo in listaTubos:
+        tubo.centerx -= 5
+    return listaTubos
+
+def DibujarTubos(ListaDeTubos):
+    #Se Dibuja cada lista de tubos 
+    for tubo in listaTubos:
+        screen.blit(imagenTubo, tubo)
+
+
 pygame.init()
 
 screen = pygame.display.set_mode((288,512))
@@ -42,10 +59,8 @@ while True:
             if event.key == pygame.K_SPACE:
                 velocidadPersonajeY = -3
         
-        if event.type == CREARTUBO:
-            #Cogemos como referencia el puntoMedio de la parte superior y lo ubicamos fuera de la pantalla por el lado derecho
-            nuevoTubo = imagenTubo.get_rect(midtop = (300, 200))
-            listaTubos.append(nuevoTubo)
+        if event.type == CREARTUBO:            
+            listaTubos.append(CrearTubo())
 
     screen.blit(imagenDeFondo, (0,0))
 
@@ -54,13 +69,11 @@ while True:
     personajeRect.centery += velocidadPersonajeY
     screen.blit(imagenPersonaje, personajeRect)
 
-    #Se Mueven todos los tubos
-    for tubo in listaTubos:
-        tubo.centerx -= 5
-
-    #Se Dibuja cada lista de tubos 
-    for tubo in listaTubos:
-        screen.blit(imagenTubo, tubo)
+    
+    #Mostrar tubos:
+    listaTubos = MoverTubos(listaTubos)
+    DibujarTubos(listaTubos)
+    
 
     posTerrenoX -= velocidadJuego
     screen.blit(imagenTerreno, (posTerrenoX, posTerrenoY))
