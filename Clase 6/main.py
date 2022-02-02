@@ -42,6 +42,13 @@ while True:
             pygame.quit()
             sys.exit()
 
+        #Detectamos el evento de una tecla presionada
+        if event.type == pygame.KEYDOWN:
+            #Se detecta si esta tecla pertenece a la tecla espacio
+            if event.key == pygame.K_SPACE:
+                #Se para en seco el personaje y se le aplica una velocidad contraria
+                velocidadPersonajeY = -3
+
     screen.blit(imagenDeFondo, (0,0))
 
     #Dibujar personaje:
