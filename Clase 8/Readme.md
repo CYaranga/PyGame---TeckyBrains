@@ -15,3 +15,9 @@ Sin embargo no tiene sentido guardar una imagen en cada uno de los obstaculos. S
 5- Manejar las colisiones
 
 6- Jugar con la dificultad
+
+Para la dificultad: 
+- incrementar levemente la gravedad. 
+- disminuir el tiempo para imprimir los tubos
+- disminuir el espacio entre los tubos de arriba y abajo
+  
